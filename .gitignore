@@ -17,6 +17,7 @@ auth.json
 .env.*
 !.env.example
 docker/.env
+!docker/.env.example
 
 # IDE & OS
 .idea/
@@ -36,3 +37,11 @@ docker/database/dump/
 public/admin/
 
 coverage/
+
+# Laravel (merged)
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+Homestead.json
+Homestead.yaml

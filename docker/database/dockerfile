@@ -1,8 +1,0 @@
-# MariaDB 10.5 kullanıyoruz
-FROM mariadb:10.5
-
-# SQL dump dosyasını container içine kopyalayalım
-COPY ./dump /docker-entrypoint-initdb.d/
-
-# Veritabanı verilerinin saklanacağı volume tanımlaması
-VOLUME /var/lib/mysql

@@ -9,7 +9,7 @@ PostgreSQL, Docker (nginx, php-fpm, mailpit, worker). Admin paneli Tabler + Blad
 
 ## Tech Stack
 
-- **Framework:** Laravel 11+
+- **Framework:** Laravel 12
 - **PHP:** 8.3 (php-fpm)
 - **Veritabanı:** PostgreSQL 16
 - **OAuth:** Laravel Passport (OIDC, PKCE, client credentials, refresh token rotation)
@@ -23,6 +23,8 @@ PostgreSQL, Docker (nginx, php-fpm, mailpit, worker). Admin paneli Tabler + Blad
 ## Docker
 
 Detaylar için [`docker/AGENTS.md`](docker/AGENTS.md).
+
+**Jobs modeli (sabit):** tek `worker` container + supervisord — `queue:work` + `schedule:work`. Ayrı `consumer` servisi yok. Local, staging ve prod VPS'te aynı compose.
 
 ```bash
 docker compose -f docker/docker-compose.yml up -d
