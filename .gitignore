@@ -1,0 +1,38 @@
+# Laravel
+/vendor/
+/node_modules/
+/public/build/
+/public/hot
+/public/storage
+/storage/*.key
+/storage/oauth-*.key
+/storage/logs/
+/storage/framework/
+/bootstrap/cache/
+.phpunit.cache
+auth.json
+
+# Environment
+.env
+.env.*
+!.env.example
+docker/.env
+
+# IDE & OS
+.idea/
+.vscode/
+.DS_Store
+
+# Logs
+*.log
+
+# Docker dumps
+docker/database/dump/
+**/*.sql
+**/*.sql.bak
+**/*.sql.gz
+
+# Tabler dist (ileride)
+public/admin/
+
+coverage/

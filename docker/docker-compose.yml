@@ -1,0 +1,55 @@
+
+
+services:
+  # PHP ve Apache servisi
+  php:
+    build: php/8.2  # ./ burada docker klasörünü işaret eder
+    ports:
+      - "8080:80"
+    volumes:
+      - ../:/var/www/html  # Ana dizindeki projeyi container içine bağlıyoruz
+    depends_on:
+      - mysql
+    networks:
+      - app_network
+
+  # MySQL servisi
+  mysql:
+    build: mysql  # MySQL için mysql klasörü içindeki Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: crm
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--host=mysql", "--user=root", "--password=rootpassword"]
+      interval: 30s
+      retries: 3
+      start_period: 30s
+      timeout: 10s
+
+  # PHPMyAdmin servisi
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8081:80"  # PHPMyAdmin'i 8081 portunda çalıştırıyoruz
+    environment:
+      PMA_HOST: mysql  # PHPMyAdmin'in MySQL servisine bağlanması için host bilgisi
+      PMA_USER: user  # MySQL kullanıcı adı
+      PMA_PASSWORD: userpassword  # MySQL kullanıcı şifresi
+    depends_on:
+      - mysql
+    networks:
+      - app_network
+
+# Ağa bağlanmak için ağ tanımlaması
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  db_data: {}

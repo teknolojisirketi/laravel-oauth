@@ -1,0 +1,55 @@
+# Bağımlılıklar
+vendor/
+node_modules/
+
+# Laravel runtime & cache
+storage/logs/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+storage/app/public/
+bootstrap/cache/
+.phpunit.cache/
+.phpunit.result.cache
+
+# Build & hot reload (kullanılmıyor olsa da Laravel default)
+public/build/
+public/hot
+public/storage
+
+# Ortam & secrets
+.env
+.env.*
+!.env.example
+storage/oauth-*.key
+storage/*.key
+
+# Log dosyaları
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# IDE & OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Test & coverage
+coverage/
+.phpunit.cache
+
+# Docker — büyük dump dosyaları
+docker/database/dump/
+docker/**/dump/
+**/*.sql
+**/*.sql.bak
+**/*.sql.gz
+
+# Tabler dist (statik tema — çok dosya, grep gürültüsü)
+public/admin/
+
+# Composer phar cache (varsa)
+auth.json
